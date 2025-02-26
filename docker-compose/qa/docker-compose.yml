@@ -27,6 +27,7 @@ services:
   #     file: common-config.yml
   #     service: network-deploy-service
 
+
   read:
     image: grafana/loki:3.1.2
     command: "-config.file=/etc/loki/config.yaml -target=read"
@@ -108,16 +109,16 @@ services:
       file: common-config.yml
       service: network-deploy-service
 
-  # prometheus:
-  #   image: prom/prometheus:v3.1.0
-  #   container_name: prometheus
-  #   ports:
-  #     - "9090:9090"
-  #   volumes:
-  #     - ../observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   extends:
-  #     file: common-config.yml
-  #     service: network-deploy-service
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
   # tempo:
   #   image: grafana/tempo:2.6.1
